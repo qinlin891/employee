@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import './index.css';
+import Employee from './components/Employee';
+
 
 function App() {
+  const [role, setRole] = useState('dev');
+  const showEmployee = true;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App bg-red-300">
+      {showEmployee ? (
+        <div>
+          <input type="text" onChange={(e) => {
+            setRole(e.target.value);
+          }}/>
+          <Employee name="Caleb" role="Intern" />
+          <Employee name="Abby" role={role} />
+          <Employee name="John" />
+        </div>
+      ) : (
+        <p>You cannot see the employees</p>
+      )}
     </div>
   );
 }
