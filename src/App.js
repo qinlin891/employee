@@ -4,8 +4,7 @@ import Employee from './components/Employee';
 import {v4 as uuidv4} from 'uuid';
 import AddEmployee from './components/AddEmployee';
 import EditEmployee from './components/EditEmployee';
-import { propTypes } from 'react-bootstrap/esm/Image';
-
+import Header from './components/Header';
 
 function App() {
   const [role, setRole] = useState('dev');
@@ -71,13 +70,11 @@ function App() {
   const showEmployee = true;
 
   return (
-    <div className="App">
+    <div className="App bg-gray-300 min-h-screen">
+      <Header/>
       {showEmployee ? (
-        <div>
-          <input type="text" onChange={(e) => {
-            setRole(e.target.value);
-          }} />
-          <div className="flex flex-wrap justify-center">
+        <>
+          <div className="flex flex-wrap justify-center my-2">
             {employees.map((employee) => {
               const editEmployee = (
                 <EditEmployee 
@@ -99,7 +96,7 @@ function App() {
             })}
           </div> 
           <AddEmployee newEmployee={newEmployee}/> 
-        </div>
+        </>
       ) : (
         <p>You cannot see the employees</p>
       )}
