@@ -14,7 +14,7 @@ export default function Dictionary() {
                 }} 
             />
             <button onClick={() => {
-                navigate('/definition/' + word, {replace: true})
+                navigate('/definition/' + word)
             }}>Search</button>
         </>
     )
